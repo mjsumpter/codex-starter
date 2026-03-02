@@ -6,9 +6,11 @@ I've found this approach to deliver significantly higher code quality than the d
 
 ### Quick start (sync the starter into your repo)
 
-- Copies the latest starter files into the current directory
+- Copies starter files into the current directory
+- If run from a local clone (`bash scripts/sync-codex-starter.sh`, or via your `codex init` wrapper), it syncs from that clone (including local tracked edits)
+- If run via the curl one-liner, it syncs from `Skarian/codex-starter` `main`
 - Asks before overwriting any existing file
-- Skips `README.md`, `.gitignore`, and `scripts/`
+- Skips `README.md`, `.gitignore`, `notes/`, `scripts/`, `.git/`, and `AGENTS.override.md`
 - Leaves your repo’s `.git` and history untouched
 - Works on macOS and Linux (on Windows, use WSL or Git Bash)
 - In `AGENTS.md`, fill in **Project-specific configuration** (build/lint/test/typecheck/docs commands)
@@ -21,6 +23,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/Skarian/codex-starter/ma
 
 - If you want to tailor this setup, clone the repo locally first
 - If you want to use Codex (or another coding agent) while editing this starter, run `bash scripts/dev-toggle.sh` (or `chmod +x scripts/dev-toggle.sh` and `./scripts/dev-toggle.sh`) to toggle dev mode. Dev mode creates `AGENTS.override.md` and adds a guard to `AGENTS.md`; running it again removes the guard and override. To change the guard or override text, edit `scripts/GUARD_TEMPLATE.md` and `scripts/OVERRIDE_TEMPLATE.md`.
+- If you use the global `codex()` wrapper from this repo, `codex new-task "<title>"` creates `.agent/tasks/active/TASK-YYYY-MM-DD__<slug>.md` from `.agent/templates/TASK_TEMPLATE.md` and opens it in your editor (`$EDITOR`, fallback `vi`).
 
 ### Starter Goals:
 
